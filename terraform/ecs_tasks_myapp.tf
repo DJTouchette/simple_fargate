@@ -41,15 +41,11 @@ resource "aws_ecs_service" "myapp" {
   ]
 }
 
-resource "aws_appautoscaling_target" "ecs_target" {
-  max_capacity       = 4
-  min_capacity       = 1
-  resource_id        = "i-074c1bfd727883981"
-  role_arn           = "${aws_iam_role.ecs_task_assume.arn}"
-  scalable_dimension = "ecs:service:DesiredCount"
+resource "aws_appautoscaling_target" "myapp" {
   service_namespace  = "ecs"
-
-  depends_on = [
-    "aws_alb_listener.myapp"
-  ]
+  resource_id        = "service/${aws_ecs_cluster.cluster.name}/${aws_ecs_service.web.name}"
+  scalable_dimension = "ecs:service:DesiredCount"
+  role_arn           = "${aws_iam_role.ecs_autoscale_role.arn}"
+  min_capacity       = 1
+  max_capacity       = 4
 }
