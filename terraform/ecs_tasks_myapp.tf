@@ -41,7 +41,7 @@ resource "aws_ecs_service" "myapp" {
   ]
 }
 
-resource "aws_appautoscaling_target" "ecs" {
+resource "aws_appautoscaling_target" "myapp" {
   service_namespace  = "ecs"
   resource_id        = "service/${aws_ecs_cluster.cluster.name}/${aws_ecs_service.web.name}"
   scalable_dimension = "ecs:service:DesiredCount"
