@@ -50,7 +50,6 @@ resource "aws_appautoscaling_target" "ecs_target" {
   service_namespace  = "ecs"
 
   depends_on = [
-    "aws_alb_listener.myapp",
-    "aws_ecs_service"
+    "aws_alb_listener.myapp"
   ]
 }
