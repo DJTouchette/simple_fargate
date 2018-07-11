@@ -1,3 +1,4 @@
 *.pem
 *.pub
 terraform/.terraform
+node_modules
