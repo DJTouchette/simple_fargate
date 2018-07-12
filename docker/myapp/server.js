@@ -3,7 +3,7 @@ var app = express();
 const count = 200000;
 
 app.get('/', function (req, res) {
-  res.send('Hello Fargate!');
+  res.send('Hello Fargate! v2');
 });
 
 app.post('/test', function (req, res) {
