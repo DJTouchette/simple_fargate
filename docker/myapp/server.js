@@ -1,16 +1,18 @@
 var express = require('express');
 var app = express();
+const count = 200000;
 
 app.get('/', function (req, res) {
   res.send('Hello Fargate!');
 });
 
-app.post('/test', function (req, respons) => {
-  for(var i = 0; i < 20000) {
+app.post('/test', function (req, res) {
+  for(var i = 0; i < count; i ++) {
     console.log(i);
+    new Date();
   }
 
-  res.send('counted to 20000');
+  res.send(`counted to ${count}, at ${new Date()}`);
 });
 
 var server = app.listen(3000, function () {
