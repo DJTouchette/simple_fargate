@@ -41,14 +41,4 @@ resource "aws_ecs_service" "myapp" {
   ]
 }
 
-resource "aws_launch_configuration" "as_conf" {
-  name_prefix   = "terraform-lc-example-"
-  image_id      = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 
